@@ -13,6 +13,7 @@
   <body>
     <h1>Beep</h1>
     <div id="counter">30</div>
+    <button id="start" onClick="start()">Start</button>
     <script>
       function beep() {
         var snd = new Audio(
@@ -21,15 +22,19 @@
         snd.play();
       }
       let counter = 30;
-      beep();
-      setInterval(() => {
-        counter -= 1;
-        if (counter === 0) {
-          counter = 30;
-          beep();
-        }
-        document.getElementById("counter").innerHTML = counter;
-      }, 1000);
+
+      function start() {
+        document.getElementById("start").style.display = "none";
+        beep();
+        setInterval(() => {
+          counter -= 1;
+          if (counter === 0) {
+            counter = 30;
+            beep();
+          }
+          document.getElementById("counter").innerHTML = counter;
+        }, 1000);
+      }
     </script>
   </body>
 </html>
