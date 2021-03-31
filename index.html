@@ -1,6 +1,18 @@
 <html>
+  <head>
+    <style>
+      body {
+        text-align: center;
+        font-family: "Courier New", Courier, monospace;
+      }
+      #counter {
+        font-size: 120pt;
+      }
+    </style>
+  </head>
   <body>
     <h1>Beep</h1>
+    <div id="counter">30</div>
     <script>
       function beep() {
         var snd = new Audio(
@@ -8,7 +20,15 @@
         );
         snd.play();
       }
-      setInterval(beep, 30 * 1000);
+      let counter = 30;
+      setInterval(() => {
+        counter -= 1;
+        if (counter === 0) {
+          counter = 30;
+          beep();
+        }
+        document.getElementById("counter").innerHTML = counter;
+      }, 1000);
     </script>
   </body>
 </html>
